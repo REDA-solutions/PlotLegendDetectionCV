@@ -129,8 +129,12 @@ class Preprocessor():
         """
         Rotates skewed images to correct rotation.
         """
-        coords = np.column_stack(np.where(image > 0))
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        gray = cv2.bitwise_not(gray)
+        ret, thresh = cv2.threshold(gray, 0, 255, 0)
+        coords = np.column_stack(np.where(thresh < 255))
         angle = cv2.minAreaRect(coords)[-1]
+        angle = angle - 90
         if angle < -45:
             angle = -(90 + angle)
         else:
