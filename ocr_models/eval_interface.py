@@ -6,7 +6,7 @@ class EvalInterface:
     Abstract class as interface for algorithms/models for easy evaluation.
     """
     @abstractmethod
-    def predict(self, img) -> list(str):
+    def predict(self, img) -> list:
         """ Returns the detected (legend) texts in a list of strings. """
         pass
 

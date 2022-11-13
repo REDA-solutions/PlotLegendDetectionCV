@@ -5,6 +5,7 @@ class Preprocessor():
     """
     Provides the preprocess()-method to preprocess an image according to the configuration/options with which the Preprocessor was initialized.
     For an example see preprocessing_example.ipynb.
+    Inspired by https://nanonets.com/blog/ocr-with-tesseract/.
     """
 
     def __init__(self, 
@@ -144,3 +145,10 @@ class Preprocessor():
         M = cv2.getRotationMatrix2D(center, angle, 1.0)
         rotated = cv2.warpAffine(image, M, (w, h), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE)
         return rotated
+
+    def _remove_black_stains(self, image):
+        """
+        Removes black stains/spots from image.
+        """
+        # to be implemented
+        return image
