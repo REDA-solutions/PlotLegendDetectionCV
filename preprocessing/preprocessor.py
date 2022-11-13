@@ -29,6 +29,7 @@ class Preprocessor():
         self.closing, 
         self.canny, 
         self.deskew) =  grayscale, noise, threshold, adapt_threshold, dilation, erosion, opening, closing, canny, deskew
+        self.name = f"Preprocessor({grayscale}-{noise}-{threshold}-{adapt_threshold}-{dilation}-{erosion}-{opening}-{closing}-{canny}-{deskew})"
 
 
     def preprocess(self, img):
