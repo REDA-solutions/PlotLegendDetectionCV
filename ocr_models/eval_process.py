@@ -26,7 +26,6 @@ for img_name in df_labels["sample_name"]:
     img = cv2.imread(os.path.join(img_path,img_name))
     if img is not None:
         imgs.append(img)
-print(len(imgs))
 
 predictions = []
 t0 = datetime.datetime.now()
@@ -49,7 +48,7 @@ score = simple_model_comparison(labels, predictions)
 
 print(
     f"""
-    Runtime: {runtime} s for {len(imgs)} images
+    Runtime: {runtime} for {len(imgs)} images
     Score: {score}
     """
 )
