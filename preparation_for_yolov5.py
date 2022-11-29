@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from tqdm import tqdm
 
 data = pd.read_csv(r'generated_data\data3\labels\generated_graph_legends.csv')
@@ -9,6 +10,9 @@ for _, row in tqdm(data.iterrows()):
     y_center_n = (row['ymin']+row['height']/2) / 512
     width_n = row['width'] / 1024
     height_n = row['height'] / 512
-    s = f"0 {x_center_n} {y_center_n} {width_n} {height_n}"
+    if np.isnan(row['xmin']):
+        s = ""
+    else:
+        s = f"0 {x_center_n} {y_center_n} {width_n} {height_n}"
     with open(path + "\\" + row['sample_name'].replace("png", "txt"), 'w') as f:
         f.write(s)
