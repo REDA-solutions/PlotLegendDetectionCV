@@ -1,0 +1,9 @@
+train: generated_data/data3/images/train/ 
+val:  generated_data/data3/images/val/
+test: generated_data/data3/images/test/
+
+# number of classes
+nc: 1
+
+# class names
+names: ["legend"]
