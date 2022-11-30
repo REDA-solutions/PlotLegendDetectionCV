@@ -4,12 +4,12 @@ import pandas as pd
 import json
 import numpy as np
 import datetime
-from pytesseract_eval import PytesseractEval
+from pytesseract_eval import PytesseractModel
 
 data_path = r'raw_data\helvetios_challenge_dataset_training'
 results_csv = r'benchmarking.csv'
 
-model = PytesseractEval()
+model = PytesseractModel()
 
 img_path = data_path + r'\images'
 labels_path = data_path + r'\labels\labels.csv'

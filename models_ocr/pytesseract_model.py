@@ -1,13 +1,12 @@
-# from eval_interface import EvalInterface
-# from preprocessing.preprocessor import Preprocessor
 import pytesseract
 from pytesseract import Output
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
-class PytesseractEval():
+class PytesseractModel():
     def __init__(self, 
-                preprocessor=None, 
-                custom_config=None, confidence=50):
+                preprocessor, 
+                custom_config=None, 
+                confidence=50):
         if custom_config == None:
             self.custom_config = r'-l eng+grc -c tessedit_char_blacklist=0123456789 --psm 11'
         else:
@@ -17,7 +16,6 @@ class PytesseractEval():
         self.name = f"pytesseract_{self.custom_config}_{self.confidence}_{self.preprocessor.name}"
 
     def predict(self, img):
-        # img = img[0]
         img = self.preprocessor.preprocess(img)
         result = []
         d = pytesseract.image_to_data(img, output_type=Output.DICT, config=self.custom_config)
