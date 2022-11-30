@@ -4,12 +4,16 @@ import pandas as pd
 import json
 import numpy as np
 import datetime
-from pytesseract_eval import PytesseractModel
+from models_ocr.pytesseract_model import PytesseractModel
+from models_ocr.preprocessing.preprocessor import Preprocessor
 
 data_path = r'raw_data\helvetios_challenge_dataset_training'
 results_csv = r'benchmarking.csv'
 
-model = PytesseractModel()
+preprocessor = Preprocessor(deskew=True)
+config = r'-l eng -c tessedit_char_blacklist=0123456789 --psm 11'
+confidence = 3
+model = PytesseractModel(preprocessor, confidence=confidence, custom_config=config)
 
 img_path = data_path + r'\images'
 labels_path = data_path + r'\labels\labels.csv'
@@ -53,5 +57,6 @@ print(
     """
 )
 
+df = pd.DataFrame({"Model": [model.name], "Runtime": [runtime], "Score": [score]})
 
-
+df.to_csv("model_evaluation.csv", mode='a', index=False, header=False)
