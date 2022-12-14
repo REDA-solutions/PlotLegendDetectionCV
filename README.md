@@ -14,9 +14,12 @@ Example: ['Type A' 'Type B' 'Type C']
 1. Image files containing one graph per file.
 2. CSV file containing the image file name and legend elements. These labels are to be used to train and test the model on the associated graphs.
 
-![Example Plot](raw_data/helvetios_challenge_dataset_training/images/20220915194540522606.png)
+<div align="center">
+<img src="raw_data/helvetios_challenge_dataset_training/images/20220915194540522606.png" height="200px">
+</div>
 
 ## Solution Approach
+To solve this task, the following approach is taken:
 
 ![Model Architecture](misc/model_architecture.png)
 
